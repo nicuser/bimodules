@@ -1,0 +1,9 @@
+user1,city1
+user2,city2
+user3,city3
+user4,city4
+user5,city5
+user6,city6
+user7,city7
+user8,city8
+user9,city9

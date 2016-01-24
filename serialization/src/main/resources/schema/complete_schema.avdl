@@ -1,0 +1,31 @@
+@namespace("org.user.post.summary")
+
+protocol UserSummaryProtocol {
+    
+    record DayCityPost {
+        string city;
+        int post_count;
+    }
+
+    record CityPostRecord {
+        string city;
+        int rank;
+        int post_count;
+    }
+
+    record DayCityPostSummary {
+        array<CityPostRecord> citySummary = [];
+    }
+
+    record UserPost {
+        string post_date;
+        int post_count;
+    }
+
+    record UserPostSummary {
+        string user_id;
+        string user_city;
+        int total_posts;
+        array<UserPost> posts = [];
+    }
+}
