@@ -1,0 +1,6 @@
+/crunch/target/
+/ingestion/target/
+/target/
+/pig/target/
+/pigUdf/target/
+.DS_Store

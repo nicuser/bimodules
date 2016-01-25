@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>edu.bigdata.training</groupId>
     <artifactId>bimodules</artifactId>
-    <version>1.0-SNAPSHOT</version>
+        <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>mapreduce</module>
@@ -13,6 +13,9 @@
         <module>flume</module>
         <module>hdfs</module>
         <module>crunch</module>
+        <module>kafka</module>
+        <module>pig</module>
+        <module>pigUdf</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -27,26 +30,26 @@
         <hbase.version>1.0.0-cdh5.4.2</hbase.version>
     </properties>
     <dependencyManagement>
-        <dependencies>
-            <dependency>
+    <dependencies>
+        <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
-            </dependency>
+        </dependency>
             
-            <dependency>
+        <dependency>
                 <groupId>org.apache.avro</groupId>
                 <artifactId>avro-mapred</artifactId>
                 <version>1.7.6-cdh5.4.2</version>
-            </dependency>
+        </dependency>
             
-            <dependency>
+        <dependency>
                 <groupId>org.apache.avro</groupId>
                 <artifactId>avro</artifactId>
                 <version>1.7.6-cdh5.4.2</version>
-            </dependency>
+        </dependency>
             
-            <dependency>
+        <dependency>
                 <groupId>org.apache.hadoop</groupId>
                 <artifactId>hadoop-core</artifactId>
                 <version>2.6.0-mr1-cdh5.4.2</version>
@@ -78,8 +81,8 @@
             </dependency>
 
             <dependency>
-                <groupId>log4j</groupId>
-                <artifactId>log4j</artifactId>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
                 <version>${log4j.version}</version>
                 <exclusions>
                     <exclusion>
@@ -99,16 +102,16 @@
                         <artifactId>jmxri</artifactId>
                     </exclusion>
                 </exclusions>
-            </dependency>
+        </dependency>
 
             <!-- Required for running LocalJobRunner from the IDE, but missing
             from hadoop-client -->
-            <dependency>
+        <dependency>
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>${commons-io.version}</version>
                 <scope>provided</scope>
-            </dependency>
+        </dependency>
 
             <dependency>
                 <groupId>org.apache.hbase</groupId>
@@ -151,7 +154,7 @@
                 <artifactId>jackson-core-asl</artifactId>
                 <version>1.9.8</version>
             </dependency>	
-        </dependencies>
+    </dependencies>
     </dependencyManagement>
     <repositories>
         <repository>
