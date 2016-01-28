@@ -17,6 +17,7 @@
         <module>pig</module>
         <module>pigUdf</module>
         <module>nosql</module>
+        <module>realtime</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
