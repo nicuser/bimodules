@@ -17,6 +17,9 @@ import org.apache.hadoop.hbase.client.ResultScanner;
 import org.apache.hadoop.hbase.client.Scan;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.hbase.HColumnDescriptor;
+import org.apache.hadoop.hbase.HTableDescriptor;
+import org.apache.hadoop.hbase.client.HBaseAdmin;
 
 /**
  *
@@ -30,7 +33,8 @@ public class HBaseDemo {
         // into your hbase-site.xml and in hbase-default.xml, as long as these can
         // be found on the CLASSPATH
         Configuration config = HBaseConfiguration.create();
-        config.set("hbase.zookeeper.quorum", "localhost");
+        config.set("hbase.zookeeper.quorum", "192.168.99.100");
+        config.set("hbase.zookeeper.property.clientPort", "2181");
 
         // Next you need a Connection to the cluster. Create one. When done with it,
         // close it. A try/finally is a good way to ensure it gets closed or use
@@ -42,6 +46,31 @@ public class HBaseDemo {
         // and RegionLocator to find where regions are out on the cluster. As opposed to Connections,
         // Table, Admin and RegionLocator instances are lightweight; create as you need them and then
         // close when done.
+        HBaseAdmin admin = new HBaseAdmin(config);
+
+        if (admin.isTableAvailable("myLittleHBaseTable") == true) {
+            // disable - then delete
+            admin.disableTable("myLittleHBaseTable");
+            admin.deleteTable("myLittleHBaseTable");
+        }
+
+        if (admin.isTableAvailable("myLittleHBaseTable") == false) {
+            // create one
+            HColumnDescriptor colFam = new HColumnDescriptor("myLittleFamily");
+            colFam.setMaxVersions(100);
+            colFam.setInMemory(true);
+
+            HColumnDescriptor colFam1 = new HColumnDescriptor("myLittleFamily1");
+            colFam1.setMaxVersions(100);
+            colFam1.setInMemory(true);
+
+            HTableDescriptor tableDesc = new HTableDescriptor("myLittleHBaseTable");
+            tableDesc.addFamily(colFam);
+            tableDesc.addFamily(colFam1);
+
+            admin.createTable(tableDesc);
+            admin.close();
+        }
         //
         Connection connection = ConnectionFactory.createConnection(config);
         try {

@@ -13,6 +13,7 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.fs.Path;
+import java.util.HashMap;
 
 /**
  *
@@ -24,7 +25,7 @@ public class HdfsApp {
 
     public static void main(String[] argv) throws IOException {
         Configuration conf = new Configuration();
-        conf.set("fs.defaultFS", "hdfs://192.168.99.100:8020");
+        conf.set("fs.defaultFS", "hdfs://192.168.200.118:8020");
         conf.set("HADOOP_USER_NAME", "cloudera");
         FileSystem fs = FileSystem.get(conf);
 
