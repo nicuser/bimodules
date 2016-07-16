@@ -22,7 +22,7 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-//Refer : BigdataDemo google doc for more instructions
+//Refer : "BigdataDemo" google doc refer "Hadoop with Cassandra Demo" for more instructions
 //Reference : https://github.com/manum/mr-cassandra
 
 public class MapReduceExample {

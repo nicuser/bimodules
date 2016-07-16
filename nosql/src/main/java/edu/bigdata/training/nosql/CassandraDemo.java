@@ -6,9 +6,7 @@ import com.datastax.driver.core.*;
  *
  * @author myhome
  */
-//CREATE KEYSPACE demo WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
-// CREATE TABLE demo.users (user_id varchar PRIMARY KEY,first varchar,last varchar,age int);
-// INSERT INTO users (user_id, first, last, age) VALUES ('jsmith', 'John', 'Smith', 42);
+//Refer : "BigdataDemo" google doc refer "Cassandra demo" for more instructions
 public class CassandraDemo {
 
     public static void main(String a[]) {
