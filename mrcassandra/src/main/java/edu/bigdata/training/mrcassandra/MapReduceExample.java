@@ -22,6 +22,9 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
+//Refer : BigdataDemo google doc for more instructions
+//Reference : https://github.com/manum/mr-cassandra
+
 public class MapReduceExample {
 
     //Mapper Class 
@@ -41,7 +44,7 @@ public class MapReduceExample {
 
         //Sets up the Cassandra connection to be used by the mapper
         public void setup(Context context) {
-            cclient.createConnection("");
+            cclient.createConnection("192.168.99.100");
         }
 
         //Closes the Cassandra connection after the mapper is done
@@ -74,8 +77,8 @@ public class MapReduceExample {
         job.setReducerClass(IntSumReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
-        FileInputFormat.addInputPath(job, new Path(args[0]));
-        FileOutputFormat.setOutputPath(job, new Path(args[1]));
+        FileInputFormat.addInputPath(job, new Path("/user/root/input/all-shakespeare.txt"));
+        FileOutputFormat.setOutputPath(job, new Path("/user/root/output/"));
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
 }
