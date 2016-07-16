@@ -28,6 +28,7 @@ public class GENDER extends EvalFunc<Tuple> {
 
             if (genderMatcher.length() == 6) {
                 String genderPattern = genderMatcher.substring(2, 4);
+                System.out.println("genderPattern:"+genderPattern);
                 if (Integer.parseInt(genderPattern) > 12) {
                     gender = "Female";
                 } else {

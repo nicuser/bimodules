@@ -12,13 +12,12 @@ package edu.bigdata.training.pig;
 import java.io.IOException;
 import org.apache.pig.PigServer;
 
-public class EmbeddedUdfSample {
+public class EmbeddedSample {
 
     public static void main(String a[]) throws Exception {
         PigServer pigServer = new PigServer("local");
 
         try {
-            //pigServer.registerJar("udfRegistry/pigUdf-1.0-SNAPSHOT.jar");
             runMyQuery(pigServer, "src/main/resources/myinput.txt");
         } catch (IOException e) {
             e.printStackTrace();
@@ -30,7 +29,7 @@ public class EmbeddedUdfSample {
         pigServer.registerQuery("B = foreach A generate flatten(TOKENIZE($0));");
         pigServer.registerQuery("C = group B by $0;");
         pigServer.registerQuery("D = foreach C generate flatten(group), COUNT(B.$0);");
-        pigServer.registerQuery("E = FILTER D BY $1 > 1;");
+        pigServer.registerQuery("E = FILTER D BY $1 > 3;");
         
         pigServer.store("E", "myoutput");
     }
