@@ -5,22 +5,18 @@ package edu.bigdata.training.hdfs;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import java.io.File;
 import java.io.IOException;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.fs.FSDataInputStream;
-import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.fs.Path;
-import java.util.HashMap;
 
 /**
  *
  * @author myhome
  */
-//before running this make sure your core-site.xml fs.defaultFS pointing to 0.0.0.0:8020
-// Permissions : http://stackoverflow.com/questions/11593374/permission-denied-at-hdfs
+// for more details refer to section "How to write file into HDFS from outside of hadoop cluster" in BigdataDemo document
+
 public class HdfsApp {
 
     public static void main(String[] argv) throws IOException {
