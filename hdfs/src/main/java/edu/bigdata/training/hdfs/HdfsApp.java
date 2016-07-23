@@ -25,13 +25,12 @@ public class HdfsApp {
 
     public static void main(String[] argv) throws IOException {
         Configuration conf = new Configuration();
-        conf.set("fs.defaultFS", "hdfs://192.168.200.118:8020");
-        conf.set("HADOOP_USER_NAME", "cloudera");
+        conf.set("HADOOP_USER_NAME", "myhome");
         FileSystem fs = FileSystem.get(conf);
 
         // Hadoop DFS deals with Path
         Path inFile = new Path("src/main/resources/sample.txt");
-        Path outFile = new Path("/user/cloudera/sample");
+        Path outFile = new Path("/user/myhome/sample");
 
         if (fs.exists(outFile)) {
             System.out.println("Output already exists");
