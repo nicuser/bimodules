@@ -9,27 +9,17 @@ package edu.bigdata.training.kafka;
  *
  * @author myhome
  */
+// Make sure docker host name mapped to ip address in /etc/hosts
 public class KafkaConsumerProducerDemo {
-
-    String ZK_CONNECT = "127.0.0.1:2181";
-    String GROUP_ID = "group1";
-    private static String TOPIC = "topic1";
-    String KAFKA_SERVER_URL = "localhost";
-    int KAFKA_SERVER_PORT = 9092;
-    int KAFKA_PRODUCER_BUFFER_SIZE = 64 * 1024;
-    int CONNECTION_TIMEOUT = 100000;
-    int RECONNECT_INTERVAL = 10000;
-    String TOPIC2 = "topic2";
-    String TOPIC3 = "topic3";
-    String CLIENT_ID = "SimpleConsumerDemoClient";
+    private static String TOPIC = "Hello-Kafka";
 
     public static void main(String[] args) {
         final boolean isAsync = args.length > 0 ? !args[0].trim().toLowerCase().equals("sync") : true;
         KafkaProducerApp producerThread = new KafkaProducerApp(TOPIC, isAsync);
         producerThread.start();
 
-        KafkaConsumerApp consumerThread = new KafkaConsumerApp(TOPIC);
-        consumerThread.start();
+//        KafkaConsumerApp consumerThread = new KafkaConsumerApp(TOPIC);
+//        consumerThread.start();
 
     }
 }
