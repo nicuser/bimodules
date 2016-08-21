@@ -20,6 +20,8 @@
         <module>realtime</module>
         <module>mrcassandra</module>
         <module>fileformats</module>
+        <module>hbase-client</module>
+        <module>core-mapreduce</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -59,7 +59,7 @@ public class WordAggregationHBase extends Configured implements Tool, Serializab
   private static final String HBASE_CONFIGURATION_ZOOKEEPER_QUORUM = "hbase.zookeeper.quorum";
   private static final String HBASE_CONFIGURATION_ZOOKEEPER_CLIENTPORT = "hbase.zookeeper.property.clientPort";
   private static final String hbaseZookeeperQuorum = "192.168.99.100";
-  private static final String hbaseZookeeperClientPort = "2181";
+  private static final String hbaseZookeeperClientPort = "2182";
 
   // HBase parameters
   private static final String TABLE_SOURCE = "list";
@@ -91,7 +91,7 @@ public class WordAggregationHBase extends Configured implements Tool, Serializab
     List<Put> putList = createPuts(Arrays.asList(character), Arrays.asList(type), Arrays.asList(quote));
 
     // We create the tables and fill the source
-    Configuration configuration = getConf();
+    Configuration configuration = HBaseConfiguration.create();
 
     createTable(configuration, TABLE_SOURCE, Bytes.toString(COLUMN_FAMILY_SOURCE));
     createTable(configuration, TABLE_TARGET, Bytes.toString(COLUMN_FAMILY_TARGET));
@@ -99,7 +99,7 @@ public class WordAggregationHBase extends Configured implements Tool, Serializab
     putInHbase(putList, configuration);
 
     // We create the pipeline which will handle most of the job.
-    Pipeline pipeline = new MRPipeline(WordAggregationHBase.class, HBaseConfiguration.create());
+    Pipeline pipeline = new MRPipeline(WordAggregationHBase.class, configuration);
 
     // The scan which will retrieve the data from the source in hbase.
     Scan scan = new Scan();

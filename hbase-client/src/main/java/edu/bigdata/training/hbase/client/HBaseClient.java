@@ -1,13 +1,19 @@
 /*
- * Reference : https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/client/package-summary.html
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package edu.bigdata.training.nosql;
+package edu.bigdata.training.hbase.client;
 
 import java.io.IOException;
+import org.apache.hadoop.conf.Configuration;
 
 import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.HColumnDescriptor;
+import org.apache.hadoop.hbase.HTableDescriptor;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.Connection;
+import org.apache.hadoop.hbase.client.HBaseAdmin;
 import org.apache.hadoop.hbase.client.ConnectionFactory;
 import org.apache.hadoop.hbase.client.Get;
 import org.apache.hadoop.hbase.client.Table;
@@ -16,16 +22,12 @@ import org.apache.hadoop.hbase.client.Result;
 import org.apache.hadoop.hbase.client.ResultScanner;
 import org.apache.hadoop.hbase.client.Scan;
 import org.apache.hadoop.hbase.util.Bytes;
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.hbase.HColumnDescriptor;
-import org.apache.hadoop.hbase.HTableDescriptor;
-import org.apache.hadoop.hbase.client.HBaseAdmin;
 
 /**
  *
  * @author myhome
  */
-public class HBaseDemo {
+public class HBaseClient {
 
     public static void main(String[] args) throws IOException {
         // You need a configuration object to tell the client where to connect.
@@ -100,7 +102,7 @@ public class HBaseDemo {
                 // arrays as hbase is all about byte arrays.  Lets pretend the table
                 // 'myLittleHBaseTable' was created with a family 'myLittleFamily'.
                 p.add(Bytes.toBytes("myLittleFamily"), Bytes.toBytes("someQualifier"),
-                        Bytes.toBytes("Some Value"));
+                            Bytes.toBytes("Some Value"));
 
                 // Once you've adorned your Put instance with all the updates you want to
                 // make, to commit it do the following (The HTable#put method takes the
