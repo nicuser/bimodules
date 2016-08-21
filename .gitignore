@@ -10,3 +10,5 @@
 /usecase/target/
 /mrcassandra/target/
 /kafka/target/
+/mapreduce/target/
+/fileformats/target/

@@ -16,17 +16,17 @@ import org.apache.hadoop.fs.Path;
  * @author myhome
  */
 // for more details refer to section "How to write file into HDFS from outside of hadoop cluster" in BigdataDemo document
+// https://community.hortonworks.com/questions/16837/cannot-copy-from-local-machine-to-vm-datanode-via.html
 
 public class HdfsApp {
 
     public static void main(String[] argv) throws IOException {
         Configuration conf = new Configuration();
-        conf.set("HADOOP_USER_NAME", "cloudera");
         FileSystem fs = FileSystem.get(conf);
 
         // Hadoop DFS deals with Path
         Path inFile = new Path("src/main/resources/sample.txt");
-        Path outFile = new Path("/user/cloudera/sample");
+        Path outFile = new Path("/user/myhome/sample");
 
         if (fs.exists(outFile)) {
             System.out.println("Output already exists");

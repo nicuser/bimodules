@@ -19,6 +19,7 @@
         <module>nosql</module>
         <module>realtime</module>
         <module>mrcassandra</module>
+        <module>fileformats</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

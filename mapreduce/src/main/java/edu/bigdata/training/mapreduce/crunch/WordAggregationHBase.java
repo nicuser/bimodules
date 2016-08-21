@@ -58,7 +58,7 @@ public class WordAggregationHBase extends Configured implements Tool, Serializab
   // locally
   private static final String HBASE_CONFIGURATION_ZOOKEEPER_QUORUM = "hbase.zookeeper.quorum";
   private static final String HBASE_CONFIGURATION_ZOOKEEPER_CLIENTPORT = "hbase.zookeeper.property.clientPort";
-  private static final String hbaseZookeeperQuorum = "192.168.1.148";
+  private static final String hbaseZookeeperQuorum = "192.168.99.100";
   private static final String hbaseZookeeperClientPort = "2181";
 
   // HBase parameters
