@@ -9,6 +9,9 @@ import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.MapFile;
 import org.apache.hadoop.conf.Configuration;
@@ -24,7 +27,7 @@ import org.apache.hadoop.fs.FSDataInputStream;
 public class MapFileWriter {
 
     @SuppressWarnings("deprecation")
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, URISyntaxException {
 
         Configuration conf = new Configuration();
         FileSystem fs;
@@ -32,8 +35,9 @@ public class MapFileWriter {
         try {
             fs = FileSystem.get(conf);
 
-            Path inputFile = new Path("src/main/resources/sample.txt");
-            Path outputFile = new Path("src/main/resources/mapfile");
+            URI inputURI = MapFileWriter.class.getClassLoader().getResource("sample.txt").toURI();
+            Path inputFile = new Path(inputURI);
+            Path outputFile = new Path("mapfile");
 
             Text txtKey = new Text();
             Text txtValue = new Text();
