@@ -14,3 +14,4 @@
 /fileformats/target/
 /hbase-client/target/
 /core-mapreduce/target/
+/serialization/target/

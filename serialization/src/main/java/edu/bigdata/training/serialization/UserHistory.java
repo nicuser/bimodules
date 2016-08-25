@@ -32,6 +32,8 @@ import org.apache.hadoop.util.ToolRunner;
 import org.user.post.summary.UserPost;
 import org.user.post.summary.UserPostSummary;
 
+// http://stackoverflow.com/questions/14735498/avro-avdl-file-generation
+// http://stackoverflow.com/questions/21539113/can-i-split-an-apache-avro-schema-across-multiple-files
 /**
  *
  * @author lsamud001c

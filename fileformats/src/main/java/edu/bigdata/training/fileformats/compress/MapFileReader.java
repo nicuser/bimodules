@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.bigdata.training.fileformats;
+package edu.bigdata.training.fileformats.compress;
 
 import java.io.IOException;
 import org.apache.hadoop.fs.FileSystem;
