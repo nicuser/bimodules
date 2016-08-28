@@ -24,8 +24,11 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
  * @author myhome
  */
 public class WordCount {
+    private enum METRICS {
+        TOTAL_WORDS
+    }
 
-    public static class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
+    public static class SimpleMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
         private final static IntWritable one = new IntWritable(1); // here it is count of the word , for every repeated word it will add one
         private Text word = new Text(); // here it will save the word and checks if the word repeats
@@ -39,6 +42,7 @@ public class WordCount {
             while (st.hasMoreTokens()) {
                 word.set(st.nextToken());
                 context.write(word, one);
+                context.getCounter(METRICS.TOTAL_WORDS).increment(1L);
             }
         }
     }
@@ -69,7 +73,7 @@ public class WordCount {
             Configuration conf = new Configuration();
             Job job = Job.getInstance(conf, "word count");
             job.setJarByClass(WordCount.class);
-            job.setMapperClass(Map.class);
+            job.setMapperClass(SimpleMapper.class);
             job.setCombinerClass(Reduce.class);
             job.setReducerClass(Reducer.class);
             job.setOutputKeyClass(Text.class);
@@ -77,6 +81,8 @@ public class WordCount {
             FileInputFormat.addInputPath(job, new Path(args[0]));
             FileOutputFormat.setOutputPath(job, new Path(args[1]));
             System.exit(job.waitForCompletion(true) ? 0 : 1);
+            
+            System.out.println("Total Words:"+job.getCounters().findCounter(METRICS.TOTAL_WORDS).getValue());
         }
     }
 }

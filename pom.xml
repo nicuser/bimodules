@@ -22,6 +22,7 @@
         <module>fileformats</module>
         <module>hbase-client</module>
         <module>core-mapreduce</module>
+        <module>hive</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
